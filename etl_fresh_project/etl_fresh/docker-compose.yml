@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB:       data_warehouse
+      POSTGRES_USER:     postgres
+      POSTGRES_PASSWORD: etl_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d data_warehouse"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  etl_app:
+    build: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file: .env
+    environment:
+      POSTGRES_HOST:     postgres
+      POSTGRES_PORT:     5432
+      POSTGRES_DB:       data_warehouse
+      POSTGRES_USER:     postgres
+      POSTGRES_PASSWORD: etl_password
+    volumes:
+      - .:/app
+    command: ["python", "orchestration/pipeline.py"]
+
+volumes:
+  postgres_data:
