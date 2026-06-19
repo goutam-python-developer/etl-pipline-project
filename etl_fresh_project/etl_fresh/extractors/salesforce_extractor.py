@@ -1,6 +1,4 @@
 """
-extractors/salesforce_extractor.py
-Salesforce se Accounts (customers) extract karta hai.
 Week 1 - Day 3-5: OAuth2 + SOQL + nextRecordsUrl cursor
 """
 
@@ -22,12 +20,7 @@ logger = get_logger("salesforce_extractor")
 
 
 class SalesforceExtractor:
-    """
-    Salesforce REST API se Account data extract karta hai.
-    - OAuth2 Username-Password flow
-    - SOQL query
-    - nextRecordsUrl cursor pagination
-    """
+    
 
     def __init__(self, settings: Optional[SalesforceSettings] = None):
         self.settings = settings or SalesforceSettings()

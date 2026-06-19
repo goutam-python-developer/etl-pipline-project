@@ -1,8 +1,4 @@
-"""
-extractors/zendesk_extractor.py
-Zendesk se tickets extract karta hai.
-Week 1 - Day 3-5: Cursor-based incremental export
-"""
+
 
 from datetime import datetime
 from typing import Generator, List, Optional
@@ -22,12 +18,7 @@ logger = get_logger("zendesk_extractor")
 
 
 class ZendeskExtractor:
-    """
-    Zendesk API se tickets extract karta hai.
-    - Basic Auth (email/token)
-    - Cursor / incremental pagination
-    """
-
+    
     def __init__(self, settings: Optional[ZendeskSettings] = None):
         self.settings = settings or ZendeskSettings()
         self.base_url  = f"https://{self.settings.subdomain}.zendesk.com/api/v2"
@@ -55,10 +46,7 @@ class ZendeskExtractor:
         batch_size: int = 100,
         updated_after: Optional[datetime] = None,
     ) -> Generator[List[UnifiedTicket], None, None]:
-        """
-        Incremental export agar updated_after diya ho,
-        warna saare tickets page by page.
-        """
+       
         if updated_after:
             url    = f"{self.base_url}/incremental/tickets.json"
             params = {

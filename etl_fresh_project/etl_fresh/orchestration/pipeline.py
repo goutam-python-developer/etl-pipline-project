@@ -1,8 +1,4 @@
-"""
-orchestration/pipeline.py
-Poora ETL pipeline — Extract → Transform → Load.
-Week 3 - Day 7: End-to-end runner
-"""
+
 
 import uuid
 import time
@@ -23,10 +19,7 @@ logger = get_logger("pipeline")
 
 
 class ETLPipeline:
-    """
-    Full pipeline orchestrator.
-    Har source ke liye: extract → transform → load → alert.
-    """
+    
 
     def __init__(self):
         self.db     = DatabaseLoader()

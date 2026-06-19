@@ -20,14 +20,7 @@ logger = get_logger("transformer")
 # ─────────────────────────────────────────────────────────
 
 class CustomerTransformer:
-    """
-    Customer data clean karta hai:
-    - Null values handle karna
-    - Date standardize karna
-    - Currency uppercase karna
-    - Duplicates remove karna
-    - Derived columns add karna
-    """
+    
 
     def transform(self, customers: List[UnifiedCustomer]) -> pl.DataFrame:
         if not customers:
@@ -183,10 +176,7 @@ class TicketTransformer:
 # ─────────────────────────────────────────────────────────
 
 class UnifiedSchemaMapper:
-    """
-    Saare sources ke transformed data ko ek
-    common warehouse schema mein map karta hai.
-    """
+   
 
     CUSTOMER_COLS = [
         "id", "source", "source_id", "email", "name",

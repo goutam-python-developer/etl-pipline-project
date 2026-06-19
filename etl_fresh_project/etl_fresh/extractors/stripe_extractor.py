@@ -1,8 +1,3 @@
-"""
-extractors/stripe_extractor.py
-Stripe API se customers aur payments extract karta hai.
-Week 1 - Day 3-5: Cursor-based pagination + Tenacity retry
-"""
 
 import time
 from datetime import datetime
@@ -28,12 +23,7 @@ logger = get_logger("stripe_extractor")
 
 
 class StripeExtractor:
-    """
-    Stripe API se data extract karta hai.
-    - Cursor-based pagination (starting_after)
-    - Rate limit handling (429 status)
-    - Automatic retry (Tenacity)
-    """
+    
 
     BASE_URL = "https://api.stripe.com/v1"
 

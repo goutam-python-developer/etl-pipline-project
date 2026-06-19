@@ -1,8 +1,4 @@
-"""
-loaders/db_loader.py
-PostgreSQL mein data load karta hai — UPSERT logic ke saath.
-Week 3 - Day 1-6
-"""
+
 
 from datetime import datetime
 from typing import List
@@ -95,12 +91,7 @@ CREATE TABLE IF NOT EXISTS etl_run_log (
 
 
 class DatabaseLoader:
-    """
-    Transformed DataFrames ko PostgreSQL mein load karta hai.
-    UPSERT = INSERT + ON CONFLICT DO UPDATE (no duplicates).
-    Week 3, Day 4-6.
-    """
-
+    
     def __init__(self, settings: DatabaseSettings = None):
         self.settings = settings or DatabaseSettings()
         self.engine   = create_engine(
